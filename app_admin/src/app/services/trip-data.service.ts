@@ -12,7 +12,7 @@ import { Trip } from '../models/trip';
 })
 export class TripDataService {
 
-  baseUrl = 'http://localhost:3000/api';
+  baseUrl = 'http://localhost:3000/api/';
 
   constructor(
     private http: HttpClient,
@@ -21,21 +21,21 @@ export class TripDataService {
 
   
   getTrips() : Observable<Trip[]> {
-    return this.http.get<Trip[]>(this.baseUrl);
+    return this.http.get<Trip[]>('http://localhost:3000/api/trips');
   }
 
   addTrip(formData: Trip) : Observable<Trip> {
-    return this.http.post<Trip>(this.baseUrl, formData);
+    return this.http.post<Trip>('http://localhost:3000/api/trips', formData);
   }
 
   getTrip(tripCode: string) : Observable<Trip[]> {
     //console.log('Inside TripDataService::getTrips');
-    return this.http.get<Trip[]>(this.baseUrl + '/' + tripCode);
+    return this.http.get<Trip[]>('http://localhost:3000/api/trips' + '/' + tripCode);
   }
 
   updateTrip(formData: Trip) : Observable<Trip> {
     //console.log('Inside TripDataService::addTrips');
-    return this.http.put<Trip>(this.baseUrl + '/' + formData.code, formData);
+    return this.http.put<Trip>('http://localhost:3000/api/trips' + '/' + formData.code, formData);
   }
 
   // Call to our /login endpoint, returns JWT
