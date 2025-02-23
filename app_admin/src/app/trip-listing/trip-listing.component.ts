@@ -54,10 +54,10 @@ export class TripListingComponent implements OnInit {
   })
 }
 
-public isLoggedIn()
-{
-return this.authenticationService.isLoggedIn();
-}
+  public isLoggedIn()
+  {
+  return this.authenticationService.isLoggedIn();
+  }
 
   ngOnInit(): void {
     console.log('ngOnInit');
